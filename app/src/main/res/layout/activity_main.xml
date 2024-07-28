@@ -24,7 +24,7 @@
             tools:layout_editor_absoluteY="217dp">
 
             <EditText
-                android:id="@+id/result"
+                android:id="@+id/input"
                 android:layout_width="345dp"
                 android:layout_height="74dp"
                 android:layout_gravity="center"
@@ -41,7 +41,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/result"
                 android:layout_width="31dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -72,14 +72,16 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <Button
-            android:id="@+id/addition"
+            android:id="@+id/add"
+            android:onClick="add"
             android:layout_width="135dp"
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
             android:text="+" />
 
         <Button
-            android:id="@+id/subt"
+            android:id="@+id/sub"
+            android:onClick="sub"
             android:layout_width="135dp"
             android:layout_height="60dp"
             android:text="-" />
@@ -97,7 +99,8 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/multipli"
+            android:id="@+id/multi"
+            android:onClick="multi"
             android:layout_width="135dp"
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
@@ -105,7 +108,8 @@
             app:layout_constraintBottom_toTopOf="@+id/textView" />
 
         <Button
-            android:id="@+id/dvide"
+            android:id="@+id/dvde"
+            android:onClick="dvde"
             android:layout_width="135dp"
             android:layout_height="60dp"
             android:text="/" />
@@ -113,7 +117,8 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/equal"
+        android:onClick="equal"
         android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
