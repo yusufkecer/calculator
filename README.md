@@ -12,4 +12,4 @@ A simple calculator application built using Kotlin and ViewBinding.
 - Tap the operation buttons (+, -, ×, ÷) to perform calculations.
 - Use the = button to display the result.
 
-![Screenshot_1722160192](https://github.com/user-attachments/assets/ae7a1b55-aadb-440f-8368-bfff11f61ea6)
+![Screenshot_1722171401](https://github.com/user-attachments/assets/5c3346ff-1e3d-4ed6-a560-b1ae7aebf5e6)
