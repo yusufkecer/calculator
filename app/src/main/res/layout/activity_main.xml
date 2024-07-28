@@ -42,7 +42,7 @@
 
             <TextView
                 android:id="@+id/result"
-                android:layout_width="31dp"
+                android:layout_width="339dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
@@ -76,6 +76,7 @@
             android:onClick="add"
             android:layout_width="135dp"
             android:layout_height="60dp"
+            android:textSize="22sp"
             android:layout_marginRight="10dp"
             android:text="+" />
 
@@ -84,6 +85,7 @@
             android:onClick="sub"
             android:layout_width="135dp"
             android:layout_height="60dp"
+            android:textSize="22sp"
             android:text="-" />
 
     </LinearLayout>
@@ -104,6 +106,7 @@
             android:layout_width="135dp"
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
+            android:textSize="22sp"
             android:text="x"
             app:layout_constraintBottom_toTopOf="@+id/textView" />
 
@@ -112,7 +115,8 @@
             android:onClick="dvde"
             android:layout_width="135dp"
             android:layout_height="60dp"
-            android:text="/" />
+            android:textSize="22sp"
+            android:text="÷" />
 
     </LinearLayout>
 

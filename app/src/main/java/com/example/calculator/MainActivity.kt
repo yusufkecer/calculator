@@ -15,15 +15,17 @@ import com.example.calculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var input: String = ""
-    private var list = listOf<Any>()
+
+    private val calculate = Calculate()
+    private var textEdit: android.widget.EditText? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        textEdit = binding.input
         enableEdgeToEdge()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -40,67 +42,40 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 input = s.toString()
-                binding.input.setSelection(binding.input.text.length)
+                textEdit!!.setSelection(textEdit!!.text.length)
             }
         })
     }
 
     fun add(view: View) {
-        checkLastOperator()
-        setValue("$input+")
-        checkFirstOperator()
-
+        setValue('+')
     }
 
     fun sub(view: View) {
-        checkLastOperator()
-        setValue("$input-")
-        checkFirstOperator()
+        setValue('-')
     }
 
     fun multi(view: View) {
-        checkLastOperator()
-        setValue("$input*")
-        checkFirstOperator()
+        setValue('x')
     }
 
     fun dvde(view: View) {
-        checkLastOperator()
-        setValue("$input/")
-        checkFirstOperator()
+        setValue('÷')
     }
 
     fun equal(view: View) {
-
-    }
-
-    fun setValue(setValue: String) {
-        binding.input.setText(setValue)
-    }
-
-    private fun checkInput() {
-        list = input.split("+", "-", "*", "/")
-        if (list.size > 1) {
-            val calculate = Calculate()
-            //  calculate.equal(list)
+        val value = calculate.equal(input)
+        if (value != null && value.toString() != "Infinity") {
+            binding.result.text = value.toString()
+        } else {
+            binding.result.text = "Hata"
         }
     }
 
-    private fun checkLastOperator() {
-        if (input.isNotEmpty()) {
-            val lastChar = input[input.length - 1]
-            if (lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') {
-                binding.input.setText(input.substring(0, input.length - 1))
-            }
-        }
-    }
-
-    private fun checkFirstOperator() {
-        if (input.isNotEmpty()) {
-            val firstChar = input[0]
-            if (firstChar == '+' || firstChar == '-' || firstChar == '*' || firstChar == '/') {
-                binding.input.setText(input.substring(1, input.length))
-            }
-        }
+    private fun setValue(setValue: Char) {
+        calculate.checkLastOperator(input, textEdit!!)
+        val fullValue = input + setValue
+        textEdit!!.setText(fullValue)
+        calculate.checkFirstOperator(input, textEdit!!)
     }
 }
